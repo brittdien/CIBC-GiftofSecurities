@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gift of Publicly Traded Securities — CIBC / Benevity</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #009bbb;
+      --teal-dark: #007a94;
+      --teal-light: #e6f6fa;
+      --charcoal: #1a1a2e;
+      --mid: #4a5568;
+      --light: #718096;
+      --border: #cbd5e0;
+      --bg: #f7f9fc;
+      --white: #ffffff;
+      --accent: #c8102e;
+      --success: #276749;
+      --success-bg: #f0fff4;
+      --warning-bg: #fffbeb;
+      --warning: #92400e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--bg);
+      color: var(--charcoal);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--charcoal);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .benevity-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+    }
+    .benevity-logo svg { width: 28px; height: 28px; }
+    .header-divider { width: 1px; height: 28px; background: rgba(255,255,255,.2); }
+    .header-subtitle { color: rgba(255,255,255,.6); font-size: 13px; font-weight: 300; }
+
+    /* ── HERO BANNER ── */
+    .hero {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      color: rgba(255,255,255,.85);
+      font-size: 15px;
+      font-weight: 300;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── NOTICE BOX ── */
+    .notice {
+      max-width: 900px;
+      margin: 28px auto 0;
+      padding: 0 20px;
+    }
+    .notice-box {
+      background: var(--warning-bg);
+      border: 1px solid #fcd34d;
+      border-left: 4px solid #f59e0b;
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 13.5px;
+      color: var(--warning);
+      line-height: 1.55;
+    }
+    .notice-box strong { font-weight: 600; }
+
+    /* ── BROKER CONTACTS ── */
+    .broker-grid {
+      max-width: 900px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 600px) { .broker-grid { grid-template-columns: 1fr; } }
+    .broker-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      font-size: 13px;
+    }
+    .broker-card h4 {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .broker-card p { color: var(--mid); line-height: 1.7; }
+    .broker-card a { color: var(--teal); text-decoration: none; }
+    .broker-card a:hover { text-decoration: underline; }
+
+    .cogf-info {
+      max-width: 900px;
+      margin: 12px auto 0;
+      padding: 0 20px;
+    }
+    .cogf-box {
+      background: var(--teal-light);
+      border: 1px solid #b2dce8;
+      border-radius: 6px;
+      padding: 12px 18px;
+      font-size: 13px;
+      color: var(--teal-dark);
+    }
+    .cogf-box strong { font-weight: 600; }
+
+    /* ── MAIN FORM WRAPPER ── */
+    .form-wrap {
+      max-width: 900px;
+      margin: 24px auto 60px;
+      padding: 0 20px;
+    }
+
+    /* ── SECTION CARDS ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--teal-light);
+    }
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--mid);
+      margin-bottom: 20px;
+      margin-top: 4px;
+      line-height: 1.55;
+    }
+
+    /* ── FORM TYPE TOGGLE ── */
+    .toggle-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+    .toggle-btn {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mid);
+      cursor: pointer;
+      transition: all .18s;
+      text-align: center;
+    }
+    .toggle-btn.active {
+      border-color: var(--teal);
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+
+    /* ── FORM FIELDS ── */
+    .field-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .cols-2 { grid-template-columns: 1fr 1fr; }
+    .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    @media (max-width: 640px) {
+      .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; }
+    }
+
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    label .req { color: var(--accent); margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      padding: 10px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--charcoal);
+      background: var(--white);
+      transition: border-color .15s, box-shadow .15s;
+      width: 100%;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0,155,187,.12);
+    }
+    input.error, select.error, textarea.error {
+      border-color: var(--accent);
+    }
+    textarea { resize: vertical; min-height: 60px; }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+
+    .field-note {
+      font-size: 11.5px;
+      color: var(--light);
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    /* ── MIN DONATION BADGE ── */
+    .min-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 12.5px;
+      color: #9a3412;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+    .min-badge::before { content: "⚠"; }
+
+    /* ── NONPROFIT ENTRIES ── */
+    .np-entry {
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 14px;
+      background: var(--bg);
+      position: relative;
+    }
+    .np-entry-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 12px;
+    }
+    .np-remove {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: none;
+      border: 1px solid #fca5a5;
+      border-radius: 4px;
+      color: #dc2626;
+      font-size: 11px;
+      padding: 3px 8px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .np-remove:hover { background: #fef2f2; }
+    .add-np-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      background: var(--white);
+      border: 1.5px dashed var(--teal);
+      border-radius: 6px;
+      color: var(--teal);
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .15s;
+      width: 100%;
+      justify-content: center;
+      margin-top: 4px;
+    }
+    .add-np-btn:hover { background: var(--teal-light); }
+    .total-shares-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1.5px solid var(--border);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .total-shares-row span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 16px;
+      color: var(--teal-dark);
+      min-width: 60px;
+      text-align: right;
+    }
+
+    /* ── CHECKBOX ── */
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .checkbox-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 1px;
+      accent-color: var(--teal);
+      cursor: pointer;
+    }
+    .checkbox-label {
+      font-size: 13.5px;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+
+    /* ── TERMS ── */
+    .terms-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+      font-size: 12.5px;
+      color: var(--mid);
+      line-height: 1.7;
+      max-height: 180px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+    }
+
+    /* ── SIGNATURE ── */
+    .sig-area {
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 14px;
+      background: var(--white);
+    }
+    #signatureCanvas {
+      display: block;
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      cursor: crosshair;
+      width: 100%;
+      height: 120px;
+      touch-action: none;
+    }
+    .sig-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .sig-clear {
+      font-family: inherit;
+      font-size: 12px;
+      padding: 5px 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--white);
+      color: var(--mid);
+      cursor: pointer;
+    }
+    .sig-clear:hover { background: var(--bg); }
+    .sig-or {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--light);
+      font-size: 12px;
+      margin: 10px 0;
+    }
+    .sig-or::before, .sig-or::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ── SUBMIT ── */
+    .submit-section { text-align: center; margin-top: 8px; }
+    .submit-btn {
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 16px 48px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: -0.2px;
+      transition: background .18s, transform .12s, box-shadow .18s;
+      box-shadow: 0 4px 14px rgba(0,155,187,.3);
+    }
+    .submit-btn:hover { background: var(--teal-dark); box-shadow: 0 6px 20px rgba(0,155,187,.4); transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { background: var(--border); color: var(--light); cursor: not-allowed; box-shadow: none; transform: none; }
+    .submit-note { font-size: 12px; color: var(--light); margin-top: 10px; }
+
+    /* ── PROGRESS INDICATOR ── */
+    .progress-bar {
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--teal);
+      transition: width .3s ease;
+      border-radius: 2px;
+    }
+
+    /* ── SUCCESS STATE ── */
+    #successMsg {
+      display: none;
+      background: var(--success-bg);
+      border: 1.5px solid #9ae6b4;
+      border-radius: 10px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    #successMsg h2 { color: var(--success); font-size: 22px; margin-bottom: 10px; }
+    #successMsg p { color: var(--mid); font-size: 14px; line-height: 1.6; }
+
+    /* ── ERROR TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1a202c;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+      transition: transform .3s ease;
+      z-index: 999;
+      white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      .site-header, .submit-section, .sig-controls, .add-np-btn, .np-remove, .hero, .notice, .broker-grid, .cogf-info { display: none !important; }
+      body { background: white; }
+      .card { box-shadow: none; border-color: #ccc; break-inside: avoid; }
+      .form-wrap { margin: 0; padding: 0; max-width: 100%; }
+    }
+
+    /* ── LOADING OVERLAY ── */
+    #loadingOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,.85);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    #loadingOverlay.show { display: flex; }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid var(--teal-light);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #loadingOverlay p { font-size: 14px; color: var(--mid); }
+  </style>
+</head>
+<body>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay">
+  <div class="spinner"></div>
+  <p>Submitting your donation form…</p>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="benevity-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="14" fill="#009bbb"/>
+        <path d="M10 16 Q16 8 22 16 Q16 24 10 16Z" fill="white"/>
+      </svg>
+      benevity
+    </div>
+    <div class="header-divider"></div>
+    <span class="header-subtitle">CIBC Employee Giving</span>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Gift of Publicly Traded Securities</h1>
+  <p>Support the causes you care about with a tax-efficient gift of securities through the Canadian Online Giving Foundation (COGF).</p>
+</div>
+
+<!-- Notice -->
+<div class="notice">
+  <div class="notice-box">
+    <strong>How to submit:</strong> Complete this form in its entirety, then send the completed copy to your Broker or Financial Advisor (Investor's Edge or Solium) to initiate the trade transferring your securities to COGF. Incomplete or unidentifiable transfers may delay your tax receipt.
+  </div>
+</div>
+
+<!-- Broker Contacts -->
+<div class="broker-grid">
+  <div class="broker-card">
+    <h4>Morgan Stanley (Solium)</h4>
+    <p>Monday – Friday, 8 am – 8 pm EST<br>
+    📧 <a href="mailto:enrollment@morganstanley.com">enrollment@morganstanley.com</a><br>
+    📞 1-877-999-2422 (CIBC)</p>
+  </div>
+  <div class="broker-card">
+    <h4>CIBC Investor's Edge</h4>
+    <p>Monday – Friday, 8 am – 8 pm EST<br>
+    📧 <a href="mailto:Mailbox.CCGOWProcessing@CIBC.com">Mailbox.CCGOWProcessing@CIBC.com</a><br>
+    📞 Toll Free 1-800-567-3343</p>
+  </div>
+</div>
+
+<!-- COGF Info -->
+<div class="cogf-info">
+  <div class="cogf-box">
+    <strong>Canadian Online Giving Foundation (COGF)</strong> — #700, 611 Meredith Road NE Calgary, AB T2E 2W5 &nbsp;|&nbsp; Charitable Registration No. 862216165RR0001 &nbsp;|&nbsp; CUID: WGDB &nbsp;|&nbsp; DTC: 5030 &nbsp;|&nbsp; Account #58765594
+  </div>
+</div>
+
+<!-- ══════════ MAIN FORM ══════════ -->
+<div class="form-wrap">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+  <form id="donationForm" novalidate>
+
+    <!-- ── 1. SUBMISSION TYPE ── -->
+    <div class="card">
+      <div class="card-title">Submission Type</div>
+      <div class="toggle-row" style="margin-top:14px;">
+        <button type="button" class="toggle-btn active" id="btnNew" onclick="setSubmissionType('new')">New Donation</button>
+        <button type="button" class="toggle-btn" id="btnResub" onclick="setSubmissionType('resubmission')">Resubmission</button>
+      </div>
+      <input type="hidden" id="submissionType" name="submissionType" value="New Donation" />
+    </div>
+
+    <!-- ── 2. TRANSFER OF SECURITIES ── -->
+    <div class="card">
+      <div class="card-title">Transfer of Securities</div>
+      <p class="card-desc">I authorize the transfer of the following securities to CIBC Investor Services Inc. for credit to COGF, as a charitable donation.</p>
+      <div class="min-badge">Minimum donation value: $1,200 CAD &nbsp;•&nbsp; Must be publicly traded</div>
+      <div class="field-grid cols-3" style="margin-bottom:14px;">
+        <div class="field">
+          <label for="security">Security Name <span class="req">*</span></label>
+          <input type="text" id="security" name="security" placeholder="e.g. CIBC Common Shares" required />
+        </div>
+        <div class="field">
+          <label for="secCountry">Country <span class="req">*</span></label>
+          <input type="text" id="secCountry" name="secCountry" placeholder="e.g. Canada" required />
+        </div>
+        <div class="field">
+          <label for="currency">Currency <span class="req">*</span></label>
+          <select id="currency" name="currency" required>
+            <option value="">Select…</option>
+            <option>CAD</option>
+            <option>USD</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-grid cols-3">
+        <div class="field">
+          <label for="market">Market</label>
+          <input type="text" id="market" name="market" placeholder="e.g. TSX" />
+        </div>
+        <div class="field">
+          <label for="marketSymbol">Market Symbol <span class="req">*</span></label>
+          <input type="text" id="marketSymbol" name="marketSymbol" placeholder="e.g. CM" required />
+        </div>
+        <div class="field">
+          <label for="numShares">No. of Shares/Units <span class="req">*</span></label>
+          <input type="number" id="numShares" name="numShares" placeholder="e.g. 50" min="1" required />
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 3. TRANSFERRING BROKER ── -->
+    <div class="card">
+      <div class="card-title">Transferring Broker Information</div>
+      <div class="field-grid" style="margin-top:14px;">
+        <div class="field">
+          <label for="selectFirm">Select Firm <span class="req">*</span></label>
+          <select id="selectFirm" name="selectFirm" required onchange="handleFirmChange()">
+            <option value="">Select broker firm…</option>
+            <option value="Morgan Stanley (Solium)">Morgan Stanley (Solium)</option>
+            <option value="CIBC Investor's Edge">CIBC Investor's Edge</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field" id="sharePlanField" style="display:none;">
+          <label for="sharePlanType">Share Purchase Plan Type <span class="req">*</span></label>
+          <select id="sharePlanType" name="sharePlanType">
+            <option value="">Select plan type…</option>
+            <option value="IAP (employee contributions)">IAP (employee contributions)</option>
+            <option value="EPSP (employer contributions)">EPSP (employer contributions)</option>
+          </select>
+          <div class="field-note">Non-Registered accounts only — no RSP or TFSA accounts.</div>
+        </div>
+        <div class="field">
+          <label for="firmName">Name of Firm <span class="req">*</span></label>
+          <input type="text" id="firmName" name="firmName" placeholder="Full firm name" required />
+        </div>
+        <div class="field">
+          <label for="clientAccount">Your Client Account Number <span class="req">*</span></label>
+          <input type="text" id="clientAccount" name="clientAccount" placeholder="Your account number" required />
+        </div>
+        <div class="field">
+          <label for="brokerPhone">Broker Name & Phone (optional)</label>
+          <input type="text" id="brokerPhone" name="brokerPhone" placeholder="e.g. Jane Smith — 416-555-0100" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 4. DONOR INFORMATION ── -->
+    <div class="card">
+      <div class="card-title">Donor Information</div>
+      <p class="card-desc">Name and contact details for charitable receipting purposes.</p>
+      <div class="field-grid cols-2" style="margin-bottom:14px;">
+        <div class="field">
+          <label for="firstName">First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+      </div>
+      <div class="field-grid" style="margin-bottom:14px;">
+        <div class="field">
+          <label for="address">Address <span class="req">*</span></label>
+          <input type="text" id="address" name="address" required />
+        </div>
+      </div>
+      <div class="field-grid cols-3" style="margin-bottom:14px;">
+        <div class="field">
+          <label for="city">City <span class="req">*</span></label>
+          <input type="text" id="city" name="city" required />
+        </div>
+        <div class="field">
+          <label for="province">Province <span class="req">*</span></label>
+          <input type="text" id="province" name="province" required />
+        </div>
+        <div class="field">
+          <label for="postalCode">Postal Code <span class="req">*</span></label>
+          <input type="text" id="postalCode" name="postalCode" required />
+        </div>
+      </div>
+      <div class="field-grid cols-3">
+        <div class="field">
+          <label for="donorCountry">Country <span class="req">*</span></label>
+          <input type="text" id="donorCountry" name="donorCountry" value="Canada" required />
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="e.g. 416-555-0100" />
+        </div>
+        <div class="field">
+          <label for="workEmail">Work Email <span class="req">*</span></label>
+          <input type="email" id="workEmail" name="workEmail" placeholder="you@cibc.com" required />
+          <div class="field-note">Must be your CIBC work email to confirm employment.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 5. RECIPIENT NON-PROFITS ── -->
+    <div class="card">
+      <div class="card-title">Selection of Recipient Non-Profits</div>
+      <p class="card-desc">Select up to 10 non-profits to receive your gift. The total shares across all entries must equal the number entered above.</p>
+      <div id="nonprofitList"></div>
+      <button type="button" class="add-np-btn" id="addNpBtn" onclick="addNonprofit()">+ Add Another Non-Profit</button>
+      <div class="total-shares-row">Total Shares: <span id="totalSharesDisplay">0</span></div>
+    </div>
+
+    <!-- ── 6. AUTHORIZATION ── -->
+    <div class="card">
+      <div class="card-title">Authorization of Donor</div>
+
+      <div class="terms-box">
+        <strong>Terms of Use:</strong> By authorizing this transfer, I agree to the following terms. I agree that this is an irrevocable donation of securities to COGF. COGF accepts securities traded on a public market in Canada or the US. As per Canada Revenue Agency (CRA) rules, the value of the receipt will be based on the closing bid price of the security on the day the securities are transferred to COGF's account. Fluctuation in market value is expected between the time the transfer is initiated and the valuation determination for the receipt. COGF does not retain securities and its broker is instructed to sell securities immediately or as quickly as possible. After the securities are sold, the monies shall be disbursed to the non-profit (minus a support fee if receiving funds by cheque). The disbursement will occur following your completed transaction. I acknowledge that this is a donation to COGF and COGF may at its discretion follow my advice as to selection of non-profit(s) for disbursement. Securities received into COGF account after 4pm EST on December 31 of the current year will result in a tax receipt dated for the next year.
+      </div>
+
+      <label class="checkbox-row" style="margin-bottom:18px;">
+        <input type="checkbox" id="anonymousDonation" name="anonymousDonation" />
+        <span class="checkbox-label"><strong>Anonymous Donation:</strong> Check this box if you do not want your name and contact information shared with the recipient non-profits.</span>
+      </label>
+
+      <label class="checkbox-row" style="margin-bottom:22px;">
+        <input type="checkbox" id="termsAccepted" name="termsAccepted" required />
+        <span class="checkbox-label"><strong>I have read and agree to the Terms of Use above.</strong> <span class="req">*</span></span>
+      </label>
+
+      <!-- Signature -->
+      <div class="field" style="margin-bottom:16px;">
+        <label>Signature <span class="req">*</span></label>
+        <div class="sig-area">
+          <canvas id="signatureCanvas" width="800" height="120"></canvas>
+          <div class="sig-controls">
+            <button type="button" class="sig-clear" onclick="clearSignature()">Clear Signature</button>
+            <span style="font-size:12px;color:var(--light);margin-left:auto;">Draw your signature above</span>
+          </div>
+          <div class="sig-or">or type your name</div>
+          <input type="text" id="typedSignature" name="typedSignature" placeholder="Type full legal name as electronic signature" />
+        </div>
+        <input type="hidden" id="signatureData" name="signatureData" />
+      </div>
+
+      <!-- Date -->
+      <div class="field cols-2" style="max-width:260px;">
+        <label for="signatureDate">Date <span class="req">*</span></label>
+        <input type="date" id="signatureDate" name="signatureDate" required />
+      </div>
+    </div>
+
+    <!-- ── SUBMIT ── -->
+    <div class="submit-section">
+      <button type="submit" class="submit-btn" id="submitBtn">Submit Donation Form</button>
+      <p class="submit-note">A copy will be emailed to you, your admin, and the giving coordinator.</p>
+    </div>
+
+  </form>
+
+  <!-- Success Message -->
+  <div id="successMsg">
+    <h2>✓ Form Submitted Successfully</h2>
+    <p>Thank you for your generous gift! A confirmation copy has been sent to your work email.<br>
+    Please also forward your completed form to your broker to initiate the transfer.</p>
+  </div>
+</div>
+
+<!-- ══════════════ SCRIPTS ══════════════ -->
+<script>
+// ── CONFIG — replace with your deployed Apps Script URL ──
+const APPS_SCRIPT_URL = "https://script.google.com/home/projects/1viGKhuFprfQtX8E-wFp5ZDJ7Rkd1OxoUW4JBi8Z9sYWwAfz1iChZJ8ij";
+
+// ── Submission type toggle ──
+function setSubmissionType(type) {
+  document.getElementById('submissionType').value = type === 'new' ? 'New Donation' : 'Resubmission';
+  document.getElementById('btnNew').classList.toggle('active', type === 'new');
+  document.getElementById('btnResub').classList.toggle('active', type === 'resubmission');
+}
+
+// ── Firm change ──
+function handleFirmChange() {
+  const firm = document.getElementById('selectFirm').value;
+  const spField = document.getElementById('sharePlanField');
+  const firmName = document.getElementById('firmName');
+  spField.style.display = firm === 'Morgan Stanley (Solium)' ? 'block' : 'none';
+  if (firm !== 'Other') firmName.value = firm;
+  else firmName.value = '';
+}
+
+// ── Nonprofits ──
+let npCount = 0;
+function addNonprofit() {
+  if (npCount >= 10) { showToast("Maximum 10 non-profits allowed."); return; }
+  npCount++;
+  const idx = npCount;
+  const div = document.createElement('div');
+  div.className = 'np-entry';
+  div.id = `np-${idx}`;
+  div.innerHTML = `
+    <div class="np-entry-num">Non-Profit #${idx}</div>
+    ${idx > 1 ? `<button type="button" class="np-remove" onclick="removeNp(${idx})">Remove</button>` : ''}
+    <div class="field-grid cols-2" style="margin-bottom:10px;">
+      <div class="field">
+        <label>Non-Profit Name <span class="req">*</span></label>
+        <input type="text" name="np_name_${idx}" placeholder="Organization name" required />
+      </div>
+      <div class="field">
+        <label>Registration # <span class="req">*</span></label>
+        <input type="text" name="np_reg_${idx}" placeholder="e.g. 123456789RR0001" required />
+      </div>
+    </div>
+    <div class="field-grid cols-2">
+      <div class="field">
+        <label># of Shares <span class="req">*</span></label>
+        <input type="number" name="np_shares_${idx}" placeholder="0" min="1" required oninput="updateTotalShares()" />
+      </div>
+      <div class="field">
+        <label>Designation / Comments</label>
+        <textarea name="np_comments_${idx}" placeholder="Optional: fund designation or message to non-profit"></textarea>
+      </div>
+    </div>
+  `;
+  document.getElementById('nonprofitList').appendChild(div);
+  if (npCount >= 10) document.getElementById('addNpBtn').style.display = 'none';
+  updateProgress();
+}
+
+function removeNp(idx) {
+  const el = document.getElementById(`np-${idx}`);
+  if (el) el.remove();
+  if (npCount >= 10) document.getElementById('addNpBtn').style.display = 'flex';
+  npCount = Math.max(0, npCount - 1);
+  updateTotalShares();
+}
+
+function updateTotalShares() {
+  const inputs = document.querySelectorAll('[name^="np_shares_"]');
+  let total = 0;
+  inputs.forEach(i => { const v = parseInt(i.value); if (!isNaN(v)) total += v; });
+  document.getElementById('totalSharesDisplay').textContent = total;
+}
+
+// ── Signature canvas ──
+const canvas = document.getElementById('signatureCanvas');
+const ctx = canvas.getContext('2d');
+let drawing = false, hasDrawn = false;
+
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  const ratio = window.devicePixelRatio || 1;
+  canvas.width = rect.width * ratio;
+  canvas.height = rect.height * ratio;
+  ctx.scale(ratio, ratio);
+  ctx.strokeStyle = '#1a1a2e';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function getPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  if (e.touches) return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+  return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+}
+
+canvas.addEventListener('mousedown', e => { drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+canvas.addEventListener('mousemove', e => { if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasDrawn = true; });
+canvas.addEventListener('mouseup', () => { drawing = false; });
+canvas.addEventListener('mouseleave', () => { drawing = false; });
+canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasDrawn = true; });
+canvas.addEventListener('touchend', () => { drawing = false; });
+
+function clearSignature() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hasDrawn = false;
+  document.getElementById('signatureData').value = '';
+}
+
+// ── Progress ──
+function updateProgress() {
+  const required = document.querySelectorAll('[required]');
+  let filled = 0;
+  required.forEach(el => {
+    if (el.type === 'checkbox') { if (el.checked) filled++; }
+    else if (el.value.trim()) filled++;
+  });
+  const pct = Math.round((filled / required.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+document.addEventListener('input', updateProgress);
+document.addEventListener('change', updateProgress);
+
+// ── Toast ──
+function showToast(msg, duration = 3500) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
+}
+
+// ── Default date ──
+document.getElementById('signatureDate').valueAsDate = new Date();
+
+// ── Init first nonprofit ──
+addNonprofit();
+
+// ── Form submit ──
+document.getElementById('donationForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  // Validate
+  const required = this.querySelectorAll('[required]');
+  let valid = true;
+  required.forEach(el => {
+    el.classList.remove('error');
+    if (el.type === 'checkbox' && !el.checked) { el.classList.add('error'); valid = false; }
+    else if (el.type !== 'checkbox' && !el.value.trim()) { el.classList.add('error'); valid = false; }
+  });
+
+  // Signature
+  const typed = document.getElementById('typedSignature').value.trim();
+  if (!hasDrawn && !typed) {
+    showToast("Please draw or type your signature.");
+    document.getElementById('signatureCanvas').classList.add('error');
+    return;
+  }
+
+  if (!valid) { showToast("Please fill in all required fields."); return; }
+
+  // Collect signature
+  if (hasDrawn) {
+    document.getElementById('signatureData').value = canvas.toDataURL('image/png');
+  } else {
+    document.getElementById('signatureData').value = 'TYPED: ' + typed;
+  }
+
+  // Collect all form data
+  const fd = new FormData(this);
+  const payload = {};
+  fd.forEach((v, k) => { payload[k] = v; });
+
+  // Collect nonprofits
+  const nps = [];
+  document.querySelectorAll('.np-entry').forEach(entry => {
+    const id = entry.id.replace('np-', '');
+    nps.push({
+      name: (payload[`np_name_${id}`] || '').trim(),
+      reg: (payload[`np_reg_${id}`] || '').trim(),
+      shares: payload[`np_shares_${id}`] || '',
+      comments: (payload[`np_comments_${id}`] || '').trim()
+    });
+  });
+  payload.nonprofits = nps;
+  payload.submittedAt = new Date().toISOString();
+
+  // Show loading
+  document.getElementById('loadingOverlay').classList.add('show');
+  document.getElementById('submitBtn').disabled = true;
+
+  try {
+    const res = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (data.status === 'ok') {
+      document.getElementById('loadingOverlay').classList.remove('show');
+      document.getElementById('donationForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error(data.message || 'Unknown error');
+    }
+  } catch (err) {
+    document.getElementById('loadingOverlay').classList.remove('show');
+    document.getElementById('submitBtn').disabled = false;
+    showToast("Submission failed: " + err.message + ". Please try again.", 5000);
+  }
+});
+</script>
+</body>
+</html>
